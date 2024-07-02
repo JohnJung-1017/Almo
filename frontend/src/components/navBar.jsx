@@ -50,9 +50,9 @@ function NavBar() {
             </div>
             <div className='nav_login'>
               <Dropdown/>
-              <div className='vertical_bar'></div>
+              <div className='vertical_bar1'></div>
               <div onClick={null} className='signIn'>로그인</div>
-              <div className='vertical_bar'></div>
+              <div className='vertical_bar1'></div>
               <div onClick={null} className='signUp'>회원가입</div>
             </div>
         </div>
