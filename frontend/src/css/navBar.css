@@ -1,6 +1,6 @@
 .nav_background{
     height: 25vh;
-    width: 100vw;
+    width: 100%;
 }
 .nav_top{
     height: 15vh;
@@ -62,7 +62,7 @@
     font-size: 25px;
     margin-top: 15px;
 }
-.vertical_bar{
+.vertical_bar1{
     height: 25px;
     border-right: 2px solid black;
     margin: 20px 10px 0 10px;

@@ -50,19 +50,19 @@ function NavBar() {
             </div>
             <div className='nav_login'>
               <Dropdown/>
-              <div className='vertical_bar'></div>
+              <div className='vertical_bar1'></div>
               <div onClick={null} className='signIn'>로그인</div>
-              <div className='vertical_bar'></div>
+              <div className='vertical_bar1'></div>
               <div onClick={null} className='signUp'>회원가입</div>
             </div>
         </div>
         <div className='nav_bottom'>
           <div className='menu_space'></div>
-            <Link className='nav_menu' to={'/main'}>홈</Link>
-            <Link className='nav_menu' to={'/main'}>실시간 인기 알바</Link>
-            <Link className='nav_menu' to={'/main'}>알바 리뷰</Link>
-            <Link className='nav_menu' to={'/main'}>채용 정보</Link>
-            <Link className='nav_menu' to={'/main'}>고객 지원</Link>
+            <Link className='nav_menu' to={'/'}>홈</Link>
+            <Link className='nav_menu' to={'/realtime'}>실시간 인기 알바</Link>
+            <Link className='nav_menu' to={'/review'}>알바 리뷰</Link>
+            <Link className='nav_menu' to={'/recruit'}>채용 정보</Link>
+            <Link className='nav_menu' to={'/support'}>고객 지원</Link>
             <div className='upload'>글쓰기</div>
         </div>
     </div>
