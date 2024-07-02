@@ -12,8 +12,8 @@ const main = () => {
               <div className='main_box1'>
                 <div className='box1_content'>
                   <div className='box1_title'>
-                    <div>토픽 베스트</div>
-                    <div>더보기</div>
+                    <div className='box1_title_bold'>토픽 베스트</div>
+                    <div className='box1_title_light'>더보기{">"} </div>
                   </div>
                 </div>
               </div>

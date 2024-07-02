@@ -20,6 +20,17 @@
     height: 60px;
     border-radius: 15px;
     background-color: orange;
+    align-items: center;
+}
+.box1_title_bold{
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+.box1_title_light{
+    margin-left: 980px;
+    font-size: 15px;
+    font-weight: 600;
 }
 .main_box2{
     display: flex;
