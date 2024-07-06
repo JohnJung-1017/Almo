@@ -18,7 +18,19 @@
  3. npm install (버전, 라이브러리 관리)
  4. npm start (react 프로젝트 실행_)
 
- ### Backend
+## Wokers
+ ### FE
+  정일형
+  - Email: jonejung1@kookmin.ac.kr
+  - github: @[JohnJung-1017](https://github.com/JohnJung-1017)
+ ### BE
+  최현택
+  - Email : cuixianze2286@naver.com
+  - github : @[cuixianze](https://github.com/cuixianze)
+ ### DESIGN
+  배수진
+  - Email : poomisujin05@gmail.com
+  - github: @SooooCoding
 
 ## 기술 스택
 <div align="center">
