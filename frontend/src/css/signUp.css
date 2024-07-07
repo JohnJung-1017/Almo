@@ -49,3 +49,46 @@
     border-radius: 40px;
 }
 /* signUpPage.jsx css 코드 */
+.signUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signUp_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form_group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+.form_group:nth-child(5){
+    flex-direction: row;
+}
+.signUp_input{
+    width: 500px;
+    height: 55px;
+    border-radius: 20px;
+    border: 1px solid orange;
+    margin: 15px;
+}
+.signUp_input:focus{
+    outline: rgb(227, 148, 0);
+}
+#phone{
+    width: 380px;
+}
+.phone_auth{
+    margin-top: 15px;
+    width: 100px;
+    height: 55px;
+    background-color: orange;
+    border-radius: 20px;
+    border: 1px solid orange;
+}
+label{
+    margin-left: 15px;
+}
