@@ -1,0 +1,54 @@
+.signIn_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signIn_title{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+.logIn{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.logIn_box{
+    display: block;
+}
+.logIn_box_input{
+    width: 500px;
+    height: 55px;
+    border-radius: 20px;
+    border: 1px solid orange;
+    margin: 15px;
+}
+.logIn_button{
+    display: block;
+}
+.logIn_box_button{
+    width: 180px;
+    height: 140px;
+    border-radius: 20px;
+    border: 1px solid orange;
+    background-color: orange;
+    margin: 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.logIn_box_button:hover{
+    background-color: rgb(255, 189, 66);
+}
+.logIn_find_box1{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+.logIn_find_box2{
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 20px;
+}
