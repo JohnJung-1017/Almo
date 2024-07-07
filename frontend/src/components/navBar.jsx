@@ -51,9 +51,9 @@ function NavBar() {
             <div className='nav_login'>
               <Dropdown/>
               <div className='vertical_bar1'></div>
-              <div onClick={null} className='signIn'>로그인</div>
+              <Link className='sign_link' to={'/signIn'}>로그인</Link>
               <div className='vertical_bar1'></div>
-              <div onClick={null} className='signUp'>회원가입</div>
+              <Link className='sign_link' to={'/signUp'}>회원가입</Link>
             </div>
         </div>
         <div className='nav_bottom'>
@@ -63,7 +63,6 @@ function NavBar() {
             <Link className='nav_menu' to={'/review'}>알바 리뷰</Link>
             <Link className='nav_menu' to={'/recruit'}>채용 정보</Link>
             <Link className='nav_menu' to={'/support'}>고객 지원</Link>
-            <div className='upload'>글쓰기</div>
         </div>
     </div>
   )

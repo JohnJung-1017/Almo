@@ -9,7 +9,6 @@
 }
 .nav_title{
     margin: 20px 0 0 30px;
-
     display: flex;
     flex-direction: row;
 }
@@ -58,7 +57,9 @@
     display: flex;
     flex-direction: row;
 }
-.signIn, .signUp{
+.sign_link{
+    text-decoration: none;
+    color: black;
     font-size: 25px;
     margin-top: 15px;
 }
@@ -89,15 +90,4 @@
     width: 200px;
     height: 40px;
     background-color: orange;
-  }
-  .upload{
-    color: black;
-    font-size: 25px;
-    font-weight: 600;
-    background-color: orange;
-    border-radius: 20px;
-    width: 160px;
-    height: 40px;
-    text-align: center;
-    margin-left: 400px;
   }
