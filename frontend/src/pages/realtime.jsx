@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../components/navBar.jsx';
+import Copyright from '../components/copyright.jsx';
 
 const Realtime = () => {
   return (
@@ -7,6 +8,7 @@ const Realtime = () => {
         <NavBar/>
         <div className='main_content'>
             <div>실시간 인기 알바 페이지</div>
+            <Copyright/>
         </div>
     </div>
   )

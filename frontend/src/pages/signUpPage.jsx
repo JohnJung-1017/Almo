@@ -1,17 +1,18 @@
 import React from 'react'
-import NavBar from '../components/navBar.jsx';
+import NavBar from '../components/navBar'
 import Copyright from '../components/copyright.jsx';
+import '../css/signUp.css';
 
-const Recruit = () => {
+const SignUpPage = () => {
   return (
-    <div className='main_background'>
+    <div className='main_content'>
         <NavBar/>
         <div className='main_content'>
-            <div>채용정보 페이지</div>
+            
             <Copyright/>
         </div>
     </div>
   )
 }
 
-export default Recruit
+export default SignUpPage
