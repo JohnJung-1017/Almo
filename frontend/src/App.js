@@ -8,6 +8,7 @@ import Support from './pages/support';
 import SignIn from './components/signIn';
 import SignUp from './components/signUp';
 import SignUpPage from './pages/signUpPage';
+import TopicBest from './pages/topicBest';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signUpPage" element={<SignUpPage />} />
+        <Route path="/topicBest" element={<TopicBest />} />
       </Routes>
     </Router>
   );
