@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ public class Post {
 
     @NonNull
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "users", referencedColumnName = "username")
     private User user;
 
     @NonNull
@@ -37,11 +36,11 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "createdAt", updatable = false)
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    // Getters and setters
+
 }

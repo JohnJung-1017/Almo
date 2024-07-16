@@ -28,7 +28,7 @@ public class Comment {
 
     @NonNull
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "users", referencedColumnName = "username")
     private User user;
 
     @NonNull

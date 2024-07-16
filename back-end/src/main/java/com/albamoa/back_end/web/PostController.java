@@ -1,5 +1,6 @@
 package com.albamoa.back_end.web;
 
+import com.albamoa.back_end.entity.DTO.PostDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,13 +35,13 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> savePost(@RequestBody Post post) {
-        return new ResponseEntity<>(postService.savePost(post),HttpStatus.CREATED);
+    public ResponseEntity<Post> savePost(@RequestBody PostDTO postDTO) {
+        return new ResponseEntity<>(postService.savePost(postDTO),HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
-        return new ResponseEntity<>(postService.updatePost(id, post),HttpStatus.OK);
+    public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody PostDTO postDTO) {
+        return new ResponseEntity<>(postService.updatePost(id, postDTO),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

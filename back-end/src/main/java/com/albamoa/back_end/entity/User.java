@@ -8,13 +8,18 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // @Column(name = "id")
