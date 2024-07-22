@@ -1,5 +1,6 @@
 package com.albamoa.back_end.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.albamoa.back_end.entity.DTO.PostDTO;
@@ -11,4 +12,6 @@ public interface PostService {
     void deletePost(Long id);
     Post updatePost(Long id, PostDTO postDTO);
     // List<Post> getPosts();
+    List<Post> getPostsWithViews(LocalDateTime startTime, LocalDateTime endTime);
+    //List<Post> getPostsByViewBetween();
 }

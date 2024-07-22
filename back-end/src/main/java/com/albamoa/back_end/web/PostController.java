@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
+import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -33,6 +34,15 @@ public class PostController {
     public ResponseEntity<Post> getPost(@PathVariable Long id) {
         return new ResponseEntity<>(postService.getPost(id),HttpStatus.OK);
     }
+
+    @GetMapping("/posts/views/{days}")
+    public ResponseEntity<List<Post>> getPostsWithViews(@PathVariable Long days){
+        LocalDateTime endTime = LocalDateTime.now();
+        LocalDateTime startTime = endTime.minusDays(days);
+        return new ResponseEntity<>(postService.getPostsWithViews(startTime,endTime),HttpStatus.OK);
+    }
+    //몇개정도 보낼건지 상의
+
 
     @PostMapping
     public ResponseEntity<Post> savePost(@RequestBody PostDTO postDTO) {
@@ -50,3 +60,5 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
+
+//POSTdto반환
