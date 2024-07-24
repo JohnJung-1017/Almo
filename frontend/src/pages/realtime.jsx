@@ -7,7 +7,9 @@ const Realtime = () => {
     <div className='main_content'>
         <NavBar/>
         <div className='main_content'>
-            <div>실시간 인기 알바 페이지</div>
+            <div>실시간 인기 알바
+              dddd
+            </div>
             <Copyright/>
         </div>
     </div>
