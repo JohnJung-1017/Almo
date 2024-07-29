@@ -49,8 +49,17 @@ public class Post {
     @Column(name = "views")
     private Long views = 0L;
 
+    @Column(name = "likes")
+    private Long likes = 0L;
+
     public void incrementViews() {
         this.views++;
+    }
+    public void incrementLikes() {
+        this.likes++;
+    }
+    public void decrementLikes() {
+        this.likes--;
     }
 
 }

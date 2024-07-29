@@ -31,22 +31,27 @@ public class PostServiceImpl implements PostService{
     ViewLogRepository viewLogRepository;
 
     @Override
-    public Post getPost(Long id) {
+    public PostDTO getPost(Long id) {
         Optional<Post> postOptional = postRepository.findById(id);
         incrementViews(id);
         if (!postOptional.isPresent()) {
             throw new EntityNotFoundException(id,Post.class);
         }
 
-//        ViewLog viewLog = new ViewLog();
-//        viewLog.setPost(postOptional.get());
-//        viewLog.setViewAt(LocalDateTime.now());
-//        viewLogRepository.save(viewLog);
-        return postOptional.get();
+        Post p = postOptional.get();
+        PostDTO postDTO = new PostDTO();
+        postDTO.setTitle(p.getTitle());
+        postDTO.setContent(p.getContent());
+        postDTO.setUsername(p.getUser().getUsername());
+        postDTO.setCategory(p.getCategory());
+        postDTO.setViews(p.getViews());
+        postDTO.setLikes(p.getLikes());
+
+        return postDTO;
     }
 
     @Override
-    public List<Post> getPostsWithViews(LocalDateTime startTime, LocalDateTime endTime) {
+    public List<PostDTO> getPostsWithViews(LocalDateTime startTime, LocalDateTime endTime) {
         List<ViewLog> logs = viewLogRepository.findByViewedAtBetween(startTime,endTime);
 
         Map<Post, Long> postViewCounts = logs.stream()
@@ -54,7 +59,17 @@ public class PostServiceImpl implements PostService{
 
         return postViewCounts.entrySet().stream()
                 .sorted(Map.Entry.<Post, Long>comparingByValue().reversed())
-                .map(Map.Entry::getKey)
+                .map(entry -> {
+                    Post post = entry.getKey();
+                    PostDTO postDTO = new PostDTO();
+                    postDTO.setTitle(post.getTitle());
+                    postDTO.setContent(post.getContent());
+                    postDTO.setUsername(post.getUser().getUsername());
+                    postDTO.setCategory(post.getCategory());
+                    postDTO.setViews(post.getViews());
+                    postDTO.setLikes(post.getLikes());
+                    return postDTO;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -71,7 +86,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Post savePost(PostDTO postDTO) {
+    public PostDTO savePost(PostDTO postDTO) {
         Optional<User> user = userRepository.findByUsername(postDTO.getUsername());
 
         if (!user.isPresent()) {
@@ -87,7 +102,17 @@ public class PostServiceImpl implements PostService{
         post.setCreatedAt(LocalDateTime.now());
         post.setUpdatedAt(LocalDateTime.now());
 
-        return postRepository.save(post);
+        postRepository.save(post);
+
+        PostDTO postDTO_Res = new PostDTO();
+        postDTO_Res.setTitle(post.getTitle());
+        postDTO_Res.setContent(post.getContent());
+        postDTO_Res.setUsername(post.getUser().getUsername());
+        postDTO_Res.setCategory(post.getCategory());
+        postDTO_Res.setViews(post.getViews());
+        postDTO_Res.setLikes(post.getLikes());
+
+        return postDTO_Res;
 
     }
 
@@ -97,14 +122,21 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Post updatePost(Long id, PostDTO postDTO) {
+    public PostDTO updatePost(Long id, PostDTO postDTO) {
         Post p = postRepository.findById(id).get();
         System.out.println(p.getTitle());
         p.setContent(postDTO.getContent());
         p.setTitle(postDTO.getTitle());
         p.setUpdatedAt(LocalDateTime.now());
         postRepository.save(p);
-        return p;
+
+        PostDTO postDTO_Res = new PostDTO();
+        postDTO_Res.setTitle(p.getTitle());
+        postDTO_Res.setContent(p.getContent());
+        postDTO_Res.setUsername(p.getUser().getUsername());
+        postDTO_Res.setCategory(p.getCategory());
+
+        return postDTO_Res;
     }
 
     // @Override

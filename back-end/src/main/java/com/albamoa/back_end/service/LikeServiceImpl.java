@@ -34,6 +34,9 @@ public class LikeServiceImpl implements LikeService{
             throw new EntityNotFoundException(likeDTO.getUsername(),User.class);
         }
 
+        postOptional.get().incrementLikes();
+        postRepository.save(postOptional.get());
+
         Like like = new Like();
         like.setPost(postOptional.get());
         like.setUser(userOptional.get());
@@ -54,6 +57,9 @@ public class LikeServiceImpl implements LikeService{
             throw new EntityNotFoundException(likeDTO.getUsername(),User.class);
         }
 
+        postOptional.get().decrementLikes();
+        postRepository.save(postOptional.get());
+
         Optional<Like> likeOptional = likeRepository.findByPostAndUser(postOptional.get(),userOptional.get());
 
         likeRepository.delete(likeOptional.get());
@@ -63,3 +69,6 @@ public class LikeServiceImpl implements LikeService{
 }
 
 //좋아요가 되어있는지를 체크
+
+
+
