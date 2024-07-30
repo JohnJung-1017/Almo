@@ -11,4 +11,5 @@ public class EntityNotFoundException extends RuntimeException{
 
     }
 
+
 }

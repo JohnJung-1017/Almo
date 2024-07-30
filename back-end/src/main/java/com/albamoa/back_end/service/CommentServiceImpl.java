@@ -23,16 +23,31 @@ public class CommentServiceImpl implements CommentService{
     PostRepository postRepository;
 
     @Override
-    public Comment getComment(Long id) {
-        Optional<Comment> commentOptional = commentRepository.findById(id);
-        if(!commentOptional.isPresent()){
-            throw new EntityNotFoundException(id,Comment.class);
+    public CommentDTO getCommentbyPostIdAndUsername(Long postId, String username) {
+        Optional<Post> postOptional = postRepository.findById(postId);
+        if(!postOptional.isPresent()){
+            throw new EntityNotFoundException(postId,Post.class);
         }
-        return commentOptional.get();
+
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if(!userOptional.isPresent()){
+            throw new EntityNotFoundException(username,User.class);
+        }
+        Optional<Comment> commentOptional = commentRepository.findByPostAndUser(postOptional.get(), userOptional.get());
+
+        if(!commentOptional.isPresent()){
+            throw new EntityNotFoundException(postId,Comment.class);
+        }
+        Comment comment = commentOptional.get();
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setContent(comment.getContent());
+        commentDTO.setUsername(comment.getUser().getUsername());
+        commentDTO.setPostId(comment.getPost().getId());
+        return commentDTO;
     }
 
     @Override
-    public Comment saveComment(CommentDTO commentDTO) {
+    public CommentDTO saveComment(CommentDTO commentDTO) {
         Optional<User> userOptional = userRepository.findByUsername(commentDTO.getUsername());
         if(!userOptional.isPresent()){
             throw new EntityNotFoundException(commentDTO.getUsername(),User.class);
@@ -49,20 +64,31 @@ public class CommentServiceImpl implements CommentService{
         comment.setCreatedAt(LocalDateTime.now());
         comment.setUpdatedAt(LocalDateTime.now());
         comment.setContent(commentDTO.getContent());
-        return commentRepository.save(comment);
+        commentRepository.save(comment);
+        return commentDTO;
     }
 
     @Override
-    public void deleteComment(Long id) {
-        Optional<Comment> commentOptional = commentRepository.findById(id);
-        if(!commentOptional.isPresent()){
-            throw new EntityNotFoundException(id,Comment.class);
+    public void deleteComment(Long postId, String username) {
+        Optional<Post> postOptional = postRepository.findById(postId);
+        if(!postOptional.isPresent()){
+            throw new EntityNotFoundException(postId,Post.class);
         }
+
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if(!userOptional.isPresent()){
+            throw new EntityNotFoundException(username,User.class);
+        }
+        Optional<Comment> commentOptional = commentRepository.findByPostAndUser(postOptional.get(), userOptional.get());
+        if(!commentOptional.isPresent()) {
+            throw new EntityNotFoundException(postId, Comment.class);
+        }
+
         commentRepository.delete(commentOptional.get());
     }
 
     @Override
-    public Comment updateComment(Long id, CommentDTO commentDTO) {
+    public CommentDTO updateComment(Long id, CommentDTO commentDTO) {
         Optional<Comment> commentOptional = commentRepository.findById(id);
         if(!commentOptional.isPresent()){
             throw new EntityNotFoundException(id,Comment.class);
@@ -80,6 +106,7 @@ public class CommentServiceImpl implements CommentService{
         Comment comment = commentOptional.get();
         comment.setUpdatedAt(LocalDateTime.now());
         comment.setContent(commentDTO.getContent());
-        return commentRepository.save(comment);
+        commentRepository.save(comment);
+        return commentDTO;
     }
 }

@@ -36,11 +36,30 @@ public class Post {
     @Column(name = "content")
     private String content;
 
+    @NonNull
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
+    @Column(name = "views")
+    private Long views = 0L;
+
+    @Column(name = "likes")
+    private Long likes = 0L;
+
+    public void incrementViews() {
+        this.views++;
+    }
+    public void incrementLikes() {
+        this.likes++;
+    }
+    public void decrementLikes() {
+        this.likes--;
+    }
 
 }

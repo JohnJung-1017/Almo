@@ -4,9 +4,9 @@ import com.albamoa.back_end.entity.Comment;
 import com.albamoa.back_end.entity.DTO.CommentDTO;
 
 public interface CommentService {
-    Comment saveComment(CommentDTO commentDTO);
-    Comment getComment(Long id);
-    void deleteComment(Long id);
-    Comment updateComment(Long id, CommentDTO commentDTO);
+    CommentDTO saveComment(CommentDTO commentDTO);
+    CommentDTO getCommentbyPostIdAndUsername(Long postId,String username);
+    void deleteComment(Long postId, String username);
+    CommentDTO updateComment(Long id, CommentDTO commentDTO);
 
 }
