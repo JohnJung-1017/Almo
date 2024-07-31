@@ -1,4 +1,4 @@
-/* 페이지별 큰박스 1개짜리 시작 */
+/* realtime title big box */
 .page_bigbox1{ /* border가 필요한가? */
     width: 1500px;
     height: 250px; 
@@ -20,4 +20,59 @@
     font-size: 20px;
     font-weight: 600;
     color: black;
+}
+
+/*real time sub box*/
+.realtime_subbox{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left: 150px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    width:1200px;
+}
+
+.realtime_content{
+    display: flex;
+    flex-direction: row;
+    width: 330px;
+    height: 500px;
+    border: 2px solid orange;
+    border-radius: 20px;
+
+}
+
+.realtime_subbox_title{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: orange;
+    font-weight: 500;
+    font-size: large;
+    height: 50px;
+}
+
+/* copyright box 시작 */ /*이걸 넣아야 하는건가?*/
+.main_copyRight{
+    margin: 60px 0 30px 0;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.copyRight_link{
+    display: flex;
+    flex-direction: row;
+}
+a{ /*what does 'a' mean?*/
+    text-decoration: none;
+}
+.vertical_bar2{
+    height: 20px;
+    border-right: 1px solid black;
+    margin: 0 10px 0 10px;
 }
