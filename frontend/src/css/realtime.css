@@ -1,0 +1,23 @@
+/* 페이지별 큰박스 1개짜리 시작 */
+.page_bigbox1{ /* border가 필요한가? */
+    width: 1500px;
+    height: 250px; 
+    background-color: orange; 
+    border-radius: 20px;
+}
+
+.page_bigbox1_title{
+    margin-top: 70px;
+    margin-left: 100px;
+    font-size: 50px;
+    font-weight: 600;
+    color: black;
+}
+
+.page_bigbox1_subtitle{
+    margin-top: 10px;
+    /*margin-left: 100px;*/
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
