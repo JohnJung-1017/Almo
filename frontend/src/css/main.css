@@ -88,6 +88,7 @@
     flex-direction: row;
     width: 1200px;
     justify-content: space-between;
+    background-color: black;
 }
 .box2_content{ /*각 박스*/
     display: flex;

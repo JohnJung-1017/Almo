@@ -1,61 +1,71 @@
-/* realtime title big box */
-.page_bigbox1{ /* border가 필요한가? */
-    width: 1500px;
-    height: 250px; 
-    background-color: orange; 
-    border-radius: 20px;
-}
-
-.page_bigbox1_title{
-    margin-top: 70px;
-    margin-left: 100px;
-    font-size: 50px;
-    font-weight: 600;
-    color: black;
-}
-
-.page_bigbox1_subtitle{
-    margin-top: 10px;
-    /*margin-left: 100px;*/
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-}
-
-/*real time sub box*/
-.realtime_subbox{
-    display: flex;
-    flex-direction: row;
+/* box 1개짜리 시작 */
+.realtime_box1{
     margin-top: 50px;
-    margin-left: 150px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    background-color: black;
-    width:1200px;
 }
-
-.realtime_content{
+.rbox1_content{
+    width: 1200px;
+    height: 250px;
+    border-radius: 20px;
+    background-color: orange;
+}
+.rbox1_title1{
+    margin-top: 50px;
+    margin-left: 30px;
+    font-size: 80px;
+    font-weight: 600;    
+}
+.rbox1_title2{
+    font-size: 30px;
+    font-weight: 600;
+}
+/* box 2개짜리 시작 */
+.realtime_box2{/*더 큰 박스*/
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rbox2_content_container{/*큰박스*/
     display: flex;
     flex-direction: row;
-    width: 330px;
+    width: 1200px;
+    justify-content: space-between;
+}
+.rbox2_content{ /*각 박스*/
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    width: 550px;
+    height: 500px;
+    background: black;
+    
+}
+.rbox2_content_left{
+    width: 100px;
+    height: 500px;
+    background-color: orange;
+    border: 2px solid orange;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.rbox2_content_right{
+    background-color: white;
+    width: 1000px;
     height: 500px;
     border: 2px solid orange;
-    border-radius: 20px;
-
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-.realtime_subbox_title{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: orange;
-    font-weight: 500;
-    font-size: large;
-    height: 50px;
-}
-
-/* copyright box 시작 */ /*이걸 넣아야 하는건가?*/
+/* copyright box 시작 */
 .main_copyRight{
     margin: 60px 0 30px 0;
     height: 60px;
@@ -68,7 +78,7 @@
     display: flex;
     flex-direction: row;
 }
-a{ /*what does 'a' mean?*/
+a{ 
     text-decoration: none;
 }
 .vertical_bar2{
