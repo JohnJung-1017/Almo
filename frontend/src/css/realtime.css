@@ -33,36 +33,27 @@
     flex-direction: row;
     width: 1200px;
     justify-content: space-between;
+    border-radius: 20px;
+    
+}
+.rbox2_title{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: large;
+    height: 100px;
+    width: 500px;
+    background-color: pink;
+    
 }
 .rbox2_content{ /*각 박스*/
     display: flex;
-    flex-direction: row;
-    border-radius: 20px;
-    width: 550px;
-    height: 500px;
-    background: black;
-    
-}
-.rbox2_content_left{
-    width: 100px;
-    height: 500px;
-    background-color: orange;
-    border: 2px solid orange;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-.rbox2_content_right{
-    background-color: white;
-    width: 1000px;
-    height: 500px;
-    border: 2px solid orange;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    width: px;
+    height: 1000px;
 }
 
 /* copyright box 시작 */

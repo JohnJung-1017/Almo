@@ -21,18 +21,18 @@ const Realtime = () => {
               </div>
               <div className='realtime_box2'>
                 <div className='rbox2_content_container'>
+                <div className='rbox2_title'>카테고리별
                   <div className='rbox2_content'>
-                    <div className='rbox2_content_left'>
-                      <h1>카테고리</h1>
                     </div>
-                    <div className='rbox2_content_right'></div>
-                  </div>
-                  <div className='rbox2_content'>
-                    <div className='rbox2_content_left'>
-                      <h1>실시간 인기알바 순위</h1>
                     </div>
-                    <div className='rbox2_content_right'></div>
+                    <div className='rbox2_content_container'>
+                    <div clssName= 'rbox2_title'>실시간인기알바순위
+                    <div className='rbox2_content'></div>
+                    </div>
+                    
                   </div>
+                  
+                  
                 </div>
               </div>
               <Copyright/>
