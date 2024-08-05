@@ -2,6 +2,7 @@ package com.albamoa.back_end.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.albamoa.back_end.entity.User;
 import com.albamoa.back_end.service.UserService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     UserService userService;
 
