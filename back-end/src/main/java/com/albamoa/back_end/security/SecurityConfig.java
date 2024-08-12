@@ -53,6 +53,7 @@ public class SecurityConfig {
                         .allowedOrigins("http://localhost:3000")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
+                        .exposedHeaders("Authorization")  // 추가된 부분
                         .allowCredentials(true);
             }
         };

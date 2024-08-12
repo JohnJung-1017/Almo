@@ -17,14 +17,19 @@ const SignIn = () => {
         username: username,
         password: password,
       });
-      console.log("Response:", response);
 
       if (response.status === 200) {
-        console.log("Response Header:", response.headers.Date);
-        const token = response.headers["Authorization"];
-        console.log("Received Token from header:", token);
-        localStorage.setItem("token", token);
-        navigate("/");
+        const token = response.headers["authorization"];
+        if (token) {
+          const cleanedToken = token.replace("Bearer ", "");
+          localStorage.setItem("token", cleanedToken);
+          const storedToken = localStorage.getItem("token");
+          console.log("Stored Token:", storedToken);
+
+          navigate("/");
+        } else {
+          setError("토큰을 받을 수 없습니다.");
+        }
       } else {
         setError("로그인에 실패했습니다.");
       }
