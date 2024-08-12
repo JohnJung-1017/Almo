@@ -13,13 +13,18 @@ const SignIn = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/user/login", {
+      const response = await axios.post("http://localhost:8080/authenticate", {
         username: username,
         password: password,
       });
+      console.log("Response:", response);
 
       if (response.status === 200) {
-        navigate("/dashboard");
+        console.log("Response Header:", response.headers.Date);
+        const token = response.headers["Authorization"];
+        console.log("Received Token from header:", token);
+        localStorage.setItem("token", token);
+        navigate("/");
       } else {
         setError("로그인에 실패했습니다.");
       }
