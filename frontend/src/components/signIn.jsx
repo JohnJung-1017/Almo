@@ -23,6 +23,7 @@ const SignIn = () => {
         if (token) {
           const cleanedToken = token.replace("Bearer ", "");
           localStorage.setItem("token", cleanedToken);
+          localStorage.setItem("loginComplete", username);
           const storedToken = localStorage.getItem("token");
           console.log("Stored Token:", storedToken);
 
