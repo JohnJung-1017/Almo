@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/comment")
@@ -35,5 +37,10 @@ public class CommentController {
     @PutMapping("/{id}")
     public ResponseEntity<CommentDTO> saveComment(@PathVariable Long id, @RequestBody CommentDTO commentDTO){
         return new ResponseEntity<>(commentService.updateComment(id, commentDTO), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<List<CommentDTO>> getCommentsByPostId(@PathVariable Long postId) {
+        return new ResponseEntity<>(commentService.getCommentsByPostId(postId), HttpStatus.OK);
     }
 }

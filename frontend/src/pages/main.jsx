@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../components/navBar.jsx";
 import Copyright from "../components/copyright.jsx";
 import axios from "axios";
 import "../css/main.css";
 
-const main = () => {
+const Main = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    
+    axios
+      .get("http://localhost:8080/post/posts/views/7")
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+      });
+  }, []);
+
   return (
     <div className="main_background">
       <NavBar />
@@ -19,6 +33,16 @@ const main = () => {
                   더보기{">"}
                 </Link>
               </div>
+              <ul className="post_list">
+                {posts.map((post) => (
+                  <li key={post.id} className="post_item">
+                    <Link to={`/posts/${post.id}`} className="post_link">
+                      {post.id}
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
           <div className="main_box4">
@@ -106,4 +130,4 @@ const main = () => {
   );
 };
 
-export default main;
+export default Main;

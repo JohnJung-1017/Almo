@@ -40,6 +40,7 @@ public class PostServiceImpl implements PostService{
 
         Post p = postOptional.get();
         PostDTO postDTO = new PostDTO();
+        postDTO.setId(p.getId());
         postDTO.setTitle(p.getTitle());
         postDTO.setContent(p.getContent());
         postDTO.setUsername(p.getUser().getUsername());
@@ -62,6 +63,7 @@ public class PostServiceImpl implements PostService{
                 .map(entry -> {
                     Post post = entry.getKey();
                     PostDTO postDTO = new PostDTO();
+                    postDTO.setId(post.getId());
                     postDTO.setTitle(post.getTitle());
                     postDTO.setContent(post.getContent());
                     postDTO.setUsername(post.getUser().getUsername());
@@ -94,6 +96,7 @@ public class PostServiceImpl implements PostService{
         }
 
         Post post = new Post();
+
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         post.setCategory(postDTO.getCategory());
@@ -105,6 +108,7 @@ public class PostServiceImpl implements PostService{
         postRepository.save(post);
 
         PostDTO postDTO_Res = new PostDTO();
+        postDTO_Res.setId(post.getId());
         postDTO_Res.setTitle(post.getTitle());
         postDTO_Res.setContent(post.getContent());
         postDTO_Res.setUsername(post.getUser().getUsername());

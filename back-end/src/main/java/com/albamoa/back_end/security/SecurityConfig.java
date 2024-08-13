@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .antMatchers("/h2/**").permitAll()
                         .antMatchers(HttpMethod.POST, "/user/register").permitAll()
                         .antMatchers(HttpMethod.GET, "/post/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/comment/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilter(authenticationFilter)

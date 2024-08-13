@@ -12,7 +12,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -108,5 +110,25 @@ public class CommentServiceImpl implements CommentService{
         comment.setContent(commentDTO.getContent());
         commentRepository.save(comment);
         return commentDTO;
+    }
+
+    @Override
+    public List<CommentDTO> getCommentsByPostId(Long postId) {
+        Optional<Post> postOptional = postRepository.findById(postId);
+        if (!postOptional.isPresent()) {
+            throw new EntityNotFoundException(postId, Post.class);
+        }
+
+        List<Comment> comments = commentRepository.findByPost(postOptional.get());
+
+        return comments.stream()
+                .map(comment -> {
+                    CommentDTO commentDTO = new CommentDTO();
+                    commentDTO.setContent(comment.getContent());
+                    commentDTO.setUsername(comment.getUser().getUsername());
+                    commentDTO.setPostId(comment.getPost().getId());
+                    return commentDTO;
+                })
+                .collect(Collectors.toList());
     }
 }

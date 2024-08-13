@@ -148,3 +148,55 @@ a {
   border-right: 1px solid black;
   margin: 0 10px 0 10px;
 }
+
+
+/* ===================== */
+/* Styles for the post list */
+.post_list {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between each post item */
+}
+
+/* Styles for each post item */
+.post_item {
+  background-color: #f9f9f9; /* Light background for the post item */
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for each post item */
+.post_item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Styles for the post link */
+.post_link {
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Default text color */
+  font-weight: bold; /* Bold text */
+  font-size: 16px; /* Font size */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Change link color on hover */
+.post_link:hover {
+  color: #007bff; /* Blue color on hover */
+}
+
+/* Optional: Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .post_item {
+    padding: 10px;
+  }
+
+  .post_link {
+    font-size: 14px;
+  }
+}
