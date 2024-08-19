@@ -1,6 +1,7 @@
 package com.albamoa.back_end.web;
 
 import com.albamoa.back_end.entity.DTO.PostDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +36,16 @@ public class PostController {
         return new ResponseEntity<>(postService.getPost(id),HttpStatus.OK);
     }
 
+    @GetMapping("/posts")
+    public ResponseEntity<Page<PostDTO>> getPosts(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,
+        @RequestParam(defaultValue = "views") String sortBy,
+        @RequestParam(defaultValue = "desc") String sortDirection){
+
+        return new ResponseEntity<>(postService.getPosts(page,size,sortBy,sortDirection),HttpStatus.OK);
+    }
+
     @GetMapping("/posts/views/{days}")
     public ResponseEntity<List<PostDTO>> getPostsWithViews(@PathVariable Long days){
         LocalDateTime endTime = LocalDateTime.now();
@@ -59,6 +70,8 @@ public class PostController {
         postService.deletePost(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
 
 //POSTdto반환

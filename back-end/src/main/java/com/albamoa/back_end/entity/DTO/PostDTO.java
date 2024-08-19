@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,6 +21,7 @@ public  class PostDTO {
     private String category;
     private Long views;
     private Long likes;
+    private LocalDateTime createAt;
 
 
 }

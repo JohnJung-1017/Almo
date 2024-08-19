@@ -10,6 +10,9 @@ import SignUp from './components/signUp';
 import SignUpPage from './pages/signUpPage';
 import TopicBest from './pages/topicBest';
 import PostDetail from './pages/PostDetail';
+import PostList from './pages/PostList';
+
+
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
         <Route path="/signUpPage" element={<SignUpPage />} />
         <Route path="/topicBest" element={<TopicBest />} />
         <Route path="/posts/:postId" element={<PostDetail />} />
+        <Route path="/posts" element={<PostList/>} />
       </Routes>
     </Router>
   );
