@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../css/postList.css"; // CSS 파일 임포트
+import PostForm from "./PostForm";
+import "../css/postList.css";
 import { Link } from "react-router-dom";
 
 const PostList = () => {
@@ -32,6 +33,11 @@ const PostList = () => {
     }
   };
 
+  const handlePostCreated = () => {
+    setPage(0); // 새 포스트를 추가한 후 첫 페이지로 이동
+    fetchPosts();
+  };
+
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
@@ -45,34 +51,52 @@ const PostList = () => {
   };
 
   return (
-    
     <div className="posts-container">
-      <div className="posts-header">
-        <label htmlFor="sortBy">Sort by: </label>
-        <select id="sortBy" value={sortBy} onChange={handleSortChange}>
-          <option value="views">Views</option>
-          <option value="title">Title</option>
-          <option value="date">Date</option>
-        </select>
+      
 
-        <label htmlFor="sortDirection">Sort direction: </label>
-        <select id="sortDirection" value={sortDirection} onChange={handleDirectionChange}>
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
-        </select>
+      <div className="posts-header">
+        <div className="sort-controls">
+          <label htmlFor="sortBy">Sort by: </label>
+          <select id="sortBy" value={sortBy} onChange={handleSortChange}>
+            <option value="views">Views</option>
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+          </select>
+
+          <label htmlFor="sortDirection">Sort direction: </label>
+          <select
+            id="sortDirection"
+            value={sortDirection}
+            onChange={handleDirectionChange}
+          >
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+          <button>
+            <Link to={`/post/create`}>
+              <h3>글쓰기</h3>
+            </Link>
+          </button>
+        </div>
       </div>
 
       <ul className="posts-list">
         {posts.map((post) => (
           <li key={post.id} className="post-item">
             <Link to={`/posts/${post.id}`} className="post_link">
-                <h3 className="post-title">{post.title}</h3>
+              <h3 className="post-title">{post.title}</h3>
             </Link>
+            
             <p className="post-content">{post.content}</p>
             <p className="post-details">
-              <span>By: {post.username}</span> | <span>Category: {post.category}</span> | <span>Views: {post.views}</span> | <span>Likes: {post.likes}</span>
+              <span>By: {post.username}</span> |{" "}
+              <span>Category: {post.category}</span> |{" "}
+              <span>Views: {post.views}</span> |{" "}
+              <span>Likes: {post.likes}</span>
             </p>
-            <p className="post-date">Posted on: {new Date(post.createAt).toLocaleDateString()}</p>
+            <p className="post-date">
+              Posted on: {new Date(post.createAt).toLocaleDateString()}
+            </p>
           </li>
         ))}
       </ul>

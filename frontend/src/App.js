@@ -11,6 +11,7 @@ import SignUpPage from './pages/signUpPage';
 import TopicBest from './pages/topicBest';
 import PostDetail from './pages/PostDetail';
 import PostList from './pages/PostList';
+import PostForm from './pages/PostForm';
 
 
 
@@ -28,7 +29,7 @@ function App() {
         <Route path="/signUpPage" element={<SignUpPage />} />
         <Route path="/topicBest" element={<TopicBest />} />
         <Route path="/posts/:postId" element={<PostDetail />} />
-        <Route path="/posts" element={<PostList/>} />
+        <Route path='/post/create' element={<PostForm/>} />
       </Routes>
     </Router>
   );

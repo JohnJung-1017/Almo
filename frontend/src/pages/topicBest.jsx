@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../components/navBar.jsx';
 import Copyright from '../components/copyright.jsx';
-import Posts from './PostList.jsx';
 import PostList from './PostList.jsx';
 
 const TopicBest = () => {
