@@ -59,8 +59,8 @@ const PostList = () => {
           <label htmlFor="sortBy">Sort by: </label>
           <select id="sortBy" value={sortBy} onChange={handleSortChange}>
             <option value="views">Views</option>
-            <option value="title">Title</option>
-            <option value="date">Date</option>
+            <option value="likes">likes</option>
+            <option value="createdAt">CreationDate</option>
           </select>
 
           <label htmlFor="sortDirection">Sort direction: </label>

@@ -37,7 +37,7 @@ const Main = () => {
                 {posts.map((post) => (
                   <li key={post.id} className="post_item">
                     <Link to={`/posts/${post.id}`} className="post_link">
-                      {post.id}
+              
                       {post.title}
                     </Link>
                   </li>

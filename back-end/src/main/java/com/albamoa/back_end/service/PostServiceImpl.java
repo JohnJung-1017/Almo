@@ -35,7 +35,7 @@ public class PostServiceImpl implements PostService{
     UserRepository userRepository;
     ViewLogRepository viewLogRepository;
 
-    private static final Set<String> VALID_SORT_FIELDS = Set.of("views", "likes", "creationDate");
+    private static final Set<String> VALID_SORT_FIELDS = Set.of("views", "likes", "createdAt");
 
 
     @Override
