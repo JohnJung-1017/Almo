@@ -1,105 +1,103 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import Pagination from '@mui/material/Pagination';
-// import { Container, Box, Typography, Card, CardContent, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-// import '../css/postList.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../css/postList.css"; // CSS 파일 임포트
+import { Link } from "react-router-dom";
 
-// const PostList = () => {
-//   const [posts, setPosts] = useState([]);
-//   const [page, setPage] = useState(1);
-//   const [pageSize] = useState(10);  // 페이지당 표시할 포스트 수
-//   const [totalPages, setTotalPages] = useState(1);
-//   const [sortBy, setSortBy] = useState('views');
-//   const [sortDirection, setSortDirection] = useState('desc');
+const PostList = () => {
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(4);
+  const [sortBy, setSortBy] = useState("views");
+  const [sortDirection, setSortDirection] = useState("desc");
+  const [totalPages, setTotalPages] = useState(0);
 
-//   useEffect(() => {
-//     fetchPosts(page, pageSize, sortBy, sortDirection);
-//   }, [page, sortBy, sortDirection]);
+  useEffect(() => {
+    fetchPosts();
+  }, [page, size, sortBy, sortDirection]);
 
-//   const fetchPosts = async (page, size, sortBy, sortDirection) => {
-//     try {
-//       const response = await axios.get('http://localhost:8080/post/posts', {
-//         params: {
-//           page: page - 1,  // Spring Boot는 페이지 번호를 0부터 시작합니다.
-//           size: 4,
-//           sortBy: sortBy,
-//           sortDirection: sortDirection,
-//         },
-//       });
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/post/posts", {
+        params: {
+          page: page,
+          size: size,
+          sortBy: sortBy,
+          sortDirection: sortDirection,
+        },
+      });
+      setPosts(response.data.content);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      console.error("Error fetching posts", error);
+    }
+  };
 
-//       console.log(response);
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
 
-//     //   setPosts(response.data.content);
-//     //   setTotalPages(response.data.totalPages);
-//     } catch (error) {
-//       console.error('Error fetching posts:', error);
-//     }
-//   };
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
 
-//   const handlePageChange = (event, value) => {
-//     setPage(value);
-//   };
+  const handleDirectionChange = (e) => {
+    setSortDirection(e.target.value);
+  };
 
-//   const handleSortChange = (event) => {
-//     setSortBy(event.target.value);
-//   };
+  return (
+    
+    <div className="posts-container">
+      <div className="posts-header">
+        <label htmlFor="sortBy">Sort by: </label>
+        <select id="sortBy" value={sortBy} onChange={handleSortChange}>
+          <option value="views">Views</option>
+          <option value="title">Title</option>
+          <option value="date">Date</option>
+        </select>
 
-//   const handleDirectionChange = (event) => {
-//     setSortDirection(event.target.value);
-//   };
+        <label htmlFor="sortDirection">Sort direction: </label>
+        <select id="sortDirection" value={sortDirection} onChange={handleDirectionChange}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </div>
 
-//   return (
-//     <Container className="post-list-container">
-//       <Box sx={{ my: 4 }}>
-//         <Typography variant="h4" component="h1" gutterBottom className="post-list-title">
-//           Post List
-//         </Typography>
-//         <Box className="post-list-controls">
-//           <FormControl variant="outlined" className="post-list-select">
-//             <InputLabel>Sort By</InputLabel>
-//             <Select value={sortBy} onChange={handleSortChange} label="Sort By">
-//               <MenuItem value="views">Views</MenuItem>
-//               <MenuItem value="likes">Likes</MenuItem>
-//               <MenuItem value="creationDate">Creation Date</MenuItem>
-//             </Select>
-//           </FormControl>
-//           <FormControl variant="outlined" className="post-list-select">
-//             <InputLabel>Direction</InputLabel>
-//             <Select value={sortDirection} onChange={handleDirectionChange} label="Direction">
-//               <MenuItem value="asc">Ascending</MenuItem>
-//               <MenuItem value="desc">Descending</MenuItem>
-//             </Select>
-//           </FormControl>
-//         </Box>
-//         <Box className="post-list-content">
-//           {posts.map((post) => (
-//             <Card key={post.id} className="post-list-card">
-//               <CardContent>
-//                 <Typography variant="h5" component="div" className="post-list-card-title">
-//                   {post.title}
-//                 </Typography>
-//                 <Typography className="post-list-card-subtitle" color="text.secondary">
-//                   By {post.username} in {post.category}
-//                 </Typography>
-//                 <Typography variant="body2" className="post-list-card-content">
-//                   {post.content}
-//                 </Typography>
-//                 <Typography variant="caption" display="block" gutterBottom className="post-list-card-meta">
-//                   Views: {post.views} | Likes: {post.likes}
-//                 </Typography>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </Box>
-//         <Pagination
-//           count={totalPages}
-//           page={page}
-//           onChange={handlePageChange}
-//           className="post-list-pagination"
-//         />
-//       </Box>
-//     </Container>
-//   );
-// };
+      <ul className="posts-list">
+        {posts.map((post) => (
+          <li key={post.id} className="post-item">
+            <Link to={`/posts/${post.id}`} className="post_link">
+                <h3 className="post-title">{post.title}</h3>
+            </Link>
+            <p className="post-content">{post.content}</p>
+            <p className="post-details">
+              <span>By: {post.username}</span> | <span>Category: {post.category}</span> | <span>Views: {post.views}</span> | <span>Likes: {post.likes}</span>
+            </p>
+            <p className="post-date">Posted on: {new Date(post.createAt).toLocaleDateString()}</p>
+          </li>
+        ))}
+      </ul>
 
-// export default PostList;
+      <div className="pagination">
+        <button
+          className="pagination-btn"
+          disabled={page <= 0}
+          onClick={() => handlePageChange(page - 1)}
+        >
+          Previous
+        </button>
+        <span className="pagination-info">
+          Page {page + 1} of {totalPages}
+        </span>
+        <button
+          className="pagination-btn"
+          disabled={page >= totalPages - 1}
+          onClick={() => handlePageChange(page + 1)}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default PostList;
