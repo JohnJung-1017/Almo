@@ -1,0 +1,45 @@
+.tb_container {
+  background-color: rgba(244, 4, 4, 0.166);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tb_box1 {
+  background-color: rgba(0, 0, 255, 0.107);
+  height: 80px;
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tb_box1_button {
+  width: 100px;
+  height: 50px;
+  border-radius: 40px;
+  border: solid 1px gray;
+}
+.tb_box2 {
+  background-color: rgba(137, 43, 226, 0.405);
+  width: 1200px;
+}
+.tb_box2_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+  height: 1000px;
+}
+.tb_box2_grid_item {
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #140000;
+}
+.tb_box2_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  height: 50px;
+}
