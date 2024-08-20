@@ -1,93 +1,110 @@
-.nav_background{
-    height: 25vh;
-    width: 100%;
+.nav_background {
+  height: 25vh;
+  width: 100%;
 }
-.nav_top{
-    height: 15vh;
-    display: flex;
-    flex-direction: row;
+.nav_top {
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
 }
-.nav_title{
-    margin: 20px 0 0 30px;
-    display: flex;
-    flex-direction: row;
+.nav_title {
+  margin: 20px 0 0 30px;
+  display: flex;
+  flex-direction: row;
 }
-.nav_logo{
-    background-color: orange;
-    height: 70px;
-    width: 70px;
-    border-radius: 35px;
+.nav_logo {
+  background-color: orange;
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
 }
-.nav_name{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.nav_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.nav_title_light{
-    font-weight: bold;
+.nav_title_light {
+  font-weight: bold;
 }
-.nav_title_bold{
-    font-weight: 700;
-    font-size: 35px;
+.nav_title_bold {
+  font-weight: 700;
+  font-size: 35px;
 }
-.nav_search{
-    width: 780px;
-    height: 60px;
-    border: 2px solid orange;
-    border-radius: 26px;
-    margin: 10px 0 0 40px;
+.nav_search {
+  width: 780px;
+  height: 60px;
+  border: 2px solid orange;
+  border-radius: 26px;
+  margin: 10px 0 0 40px;
 }
-.nav_bottom{
-    border-top: solid 1px orange;
-    border-bottom: solid 1px orange;
-    height: 10vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.nav_bottom {
+  border-top: solid 1px orange;
+  border-bottom: solid 1px orange;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.nav_menu{
-    text-decoration: none;
-    color: black;
-    font-size: 25px;
-    font-weight: 600;
-    margin-left: 30px;
+.nav_menu {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 30px;
 }
-.nav_login{
-    margin-left: 70px;
-    display: flex;
-    flex-direction: row;
+.nav_login {
+  margin-left: 70px;
+  display: flex;
+  flex-direction: row;
 }
-.sign_link{
-    text-decoration: none;
-    color: black;
-    font-size: 25px;
-    margin-top: 15px;
+.sign_link {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  margin-top: 15px;
 }
-.vertical_bar1{
-    height: 25px;
-    border-right: 2px solid black;
-    margin: 20px 10px 0 10px;
+.vertical_bar1 {
+  height: 25px;
+  border-right: 2px solid black;
+  margin: 20px 10px 0 10px;
 }
-.search_bar{
-    display: flex;
-    flex-direction: row;
-  }
-  .search_input{
-    margin-left: 20px;
-    width: 650px;
-    height: 55px;
-    border: none;
-    outline: none;
-    font-size: 25px;
-  }
-  .search_button{
-    margin-left: 10px;
-    background-color: transparent;
-    border: none;
-  }
-  .menu_space{
-    margin-left: 20px;
-    width: 200px;
-    height: 40px;
-    background-color: orange;
-  }
+.search_bar {
+  display: flex;
+  flex-direction: row;
+}
+.search_input {
+  margin-left: 20px;
+  width: 650px;
+  height: 55px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+}
+.search_button {
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+}
+.menu_space {
+  margin-left: 20px;
+  width: 200px;
+  height: 40px;
+  background-color: transparent;
+}
+.nav_user {
+  height: 15vh;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_welcome {
+  font-size: larger;
+}
+.logout_button {
+  color: black;
+  font-weight: bold;
+  background-color: orange;
+  border-radius: 5px;
+  border: solid 1px orange;
+}
