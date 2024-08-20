@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.albamoa.back_end.entity.DTO.PostDTO;
@@ -12,6 +13,10 @@ import com.albamoa.back_end.entity.ViewLog;
 import com.albamoa.back_end.exception.EntityNotFoundException;
 import com.albamoa.back_end.repository.UserRepository;
 import com.albamoa.back_end.repository.ViewLogRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.albamoa.back_end.entity.Post;
@@ -30,6 +35,9 @@ public class PostServiceImpl implements PostService{
     UserRepository userRepository;
     ViewLogRepository viewLogRepository;
 
+    private static final Set<String> VALID_SORT_FIELDS = Set.of("views", "likes", "createdAt");
+
+
     @Override
     public PostDTO getPost(Long id) {
         Optional<Post> postOptional = postRepository.findById(id);
@@ -40,6 +48,7 @@ public class PostServiceImpl implements PostService{
 
         Post p = postOptional.get();
         PostDTO postDTO = new PostDTO();
+        postDTO.setId(p.getId());
         postDTO.setTitle(p.getTitle());
         postDTO.setContent(p.getContent());
         postDTO.setUsername(p.getUser().getUsername());
@@ -52,16 +61,14 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public List<PostDTO> getPostsWithViews(LocalDateTime startTime, LocalDateTime endTime) {
-        List<ViewLog> logs = viewLogRepository.findByViewedAtBetween(startTime,endTime);
 
-        Map<Post, Long> postViewCounts = logs.stream()
-                .collect(Collectors.groupingBy(ViewLog::getPost,Collectors.counting()));
-
-        return postViewCounts.entrySet().stream()
-                .sorted(Map.Entry.<Post, Long>comparingByValue().reversed())
-                .map(entry -> {
-                    Post post = entry.getKey();
+        Pageable pageable = PageRequest.of(0,5);
+        List<Post> posts = postRepository.findAllByOrderByViewsDesc(pageable);
+        System.out.println(posts);
+        return posts.stream()
+                .map(post -> {
                     PostDTO postDTO = new PostDTO();
+                    postDTO.setId(post.getId());
                     postDTO.setTitle(post.getTitle());
                     postDTO.setContent(post.getContent());
                     postDTO.setUsername(post.getUser().getUsername());
@@ -71,6 +78,7 @@ public class PostServiceImpl implements PostService{
                     return postDTO;
                 })
                 .collect(Collectors.toList());
+
     }
 
     @Transactional
@@ -94,6 +102,7 @@ public class PostServiceImpl implements PostService{
         }
 
         Post post = new Post();
+
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         post.setCategory(postDTO.getCategory());
@@ -105,6 +114,7 @@ public class PostServiceImpl implements PostService{
         postRepository.save(post);
 
         PostDTO postDTO_Res = new PostDTO();
+        postDTO_Res.setId(post.getId());
         postDTO_Res.setTitle(post.getTitle());
         postDTO_Res.setContent(post.getContent());
         postDTO_Res.setUsername(post.getUser().getUsername());
@@ -139,9 +149,28 @@ public class PostServiceImpl implements PostService{
         return postDTO_Res;
     }
 
-    // @Override
-    // public List<Post> getPosts() {
-    //     // TODO Auto-generated method stub
-    //     return null;
-    // }
+
+    @Override
+    public Page<PostDTO> getPosts(int page, int size, String sortBy, String sortDirection) {
+        if (!VALID_SORT_FIELDS.contains(sortBy)) {
+            throw new IllegalArgumentException("Invalid sort field: " + sortBy);
+        }
+
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<Post> posts = postRepository.findAll(pageable);
+
+        return posts.map(post -> {
+            PostDTO postDTO = new PostDTO();
+            postDTO.setId(post.getId());
+            postDTO.setTitle(post.getTitle());
+            postDTO.setContent(post.getContent());
+            postDTO.setUsername(post.getUser().getUsername());
+            postDTO.setCategory(post.getCategory());
+            postDTO.setViews(post.getViews());
+            postDTO.setLikes(post.getLikes());
+            postDTO.setCreateAt(post.getCreatedAt());
+            return postDTO;
+        });
+    }
 }

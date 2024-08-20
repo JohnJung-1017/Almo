@@ -13,13 +13,24 @@ const SignIn = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/user/login", {
+      const response = await axios.post("http://localhost:8080/authenticate", {
         username: username,
         password: password,
       });
 
       if (response.status === 200) {
-        navigate("/dashboard");
+        const token = response.headers["authorization"];
+        if (token) {
+          const cleanedToken = token.replace("Bearer ", "");
+          localStorage.setItem("token", cleanedToken);
+          localStorage.setItem("loginComplete", username);
+          const storedToken = localStorage.getItem("token");
+          console.log("Stored Token:", storedToken);
+
+          navigate("/");
+        } else {
+          setError("토큰을 받을 수 없습니다.");
+        }
       } else {
         setError("로그인에 실패했습니다.");
       }
