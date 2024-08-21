@@ -72,7 +72,7 @@ function NavBar() {
 
         {isLoggedIn ? (
           <div className="nav_user">
-            <span>{username}님 안녕하세요</span>
+            <span className="nav_welcome">{username}님 안녕하세요</span>
             <button onClick={handleLogout} className="logout_button">
               로그아웃
             </button>
@@ -96,6 +96,9 @@ function NavBar() {
         <Link className="nav_menu" to={"/"}>
           홈
         </Link>
+        <Link className="nav_menu" to={"/topicBest"}>
+          토픽 베스트
+        </Link>
         <Link className="nav_menu" to={"/realtime"}>
           실시간 인기 알바
         </Link>
@@ -104,9 +107,6 @@ function NavBar() {
         </Link>
         <Link className="nav_menu" to={"/recruit"}>
           채용 정보
-        </Link>
-        <Link className="nav_menu" to={"/support"}>
-          고객 지원
         </Link>
       </div>
     </div>
