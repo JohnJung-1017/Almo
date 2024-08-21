@@ -15,7 +15,7 @@ const TopicBest = () => {
     <div className="main_content">
       <NavBar />
       <div className="main_content">
-        {/* <PostList/> */}
+        <PostList />
         <div className="tb_container">
           <div className="tb_title">
             <h1 className="tb_title1">토픽 베스트</h1>
